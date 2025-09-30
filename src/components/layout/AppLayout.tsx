@@ -44,11 +44,7 @@ const userNavItems: NavItem[] = [
 ];
 
 const adminNavItems: NavItem[] = [
-  { title: 'Overview', href: '/admin', icon: BarChart3 },
-  { title: 'Users', href: '/admin/users', icon: Users },
-  { title: 'Plans', href: '/admin/plans', icon: Package },
-  { title: 'Deposits', href: '/admin/deposits', icon: ArrowDownLeft },
-  { title: 'Withdrawals', href: '/admin/withdrawals', icon: ArrowUpRight },
+  { title: 'Admin Dashboard', href: '/admin', icon: BarChart3 },
 ];
 
 interface AppLayoutProps {

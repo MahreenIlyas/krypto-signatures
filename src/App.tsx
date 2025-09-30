@@ -18,6 +18,12 @@ import Deposits from "./pages/Deposits";
 import Withdrawals from "./pages/Withdrawals";
 import Subscriptions from "./pages/Subscriptions";
 
+// Admin pages
+import AdminDashboard from "./pages/admin/AdminDashboard";
+
+// Components
+import { RootRedirect } from "@/components/layout/RootRedirect";
+
 // 404 page
 import NotFound from "./pages/NotFound";
 
@@ -35,6 +41,15 @@ const App = () => (
             <Route path="/login" element={<Login />} />
             <Route path="/register" element={<Register />} />
             
+            {/* Admin routes */}
+            <Route path="/admin" element={
+              <ProtectedRoute requiredRole="ADMIN">
+                <AppLayout>
+                  <AdminDashboard />
+                </AppLayout>
+              </ProtectedRoute>
+            } />
+
             {/* Protected routes with layout */}
             <Route path="/dashboard" element={
               <ProtectedRoute requiredRole="USER">
@@ -77,7 +92,7 @@ const App = () => (
             } />
 
             {/* Root redirect */}
-            <Route path="/" element={<Navigate to="/dashboard" replace />} />
+            <Route path="/" element={<RootRedirect />} />
             
             {/* 404 */}
             <Route path="*" element={<NotFound />} />
