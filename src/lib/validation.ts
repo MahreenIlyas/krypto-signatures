@@ -67,11 +67,16 @@ export const userSchema = z.object({
   phone: z.string()
     .trim()
     .optional(),
-  role: z.enum(['ADMIN', 'USER'] as const, {
-    errorMap: () => ({ message: 'Role must be either ADMIN or USER' })
+  role: z.union([z.literal('ADMIN'), z.literal('USER')], {
+    message: 'Role must be either ADMIN or USER'
   }),
-  status: z.enum(['PENDING', 'APPROVED', 'REJECTED', 'DISABLED'] as const, {
-    errorMap: () => ({ message: 'Invalid status' })
+  status: z.union([
+    z.literal('PENDING'),
+    z.literal('APPROVED'),
+    z.literal('REJECTED'),
+    z.literal('DISABLED')
+  ], {
+    message: 'Invalid status'
   }),
 });
 
